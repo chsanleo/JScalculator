@@ -17,33 +17,39 @@
         <div class="container" style="background-color: blueviolet;">
             <div class="row" id="screen"></div>
             <div class="row">
-                <button type="button" class="col">C</button>
-                <button type="button" class="col">/</button>    
+                <button type="button" class="col op-bttn" onclick ="cleanCalc()">C</button>
+                <button type="button" class="col op-bttn" onclick ="addOperation(this.value)" value="/">/</button>    
             </div>
             <div class="row">
                 <button type="button" class="col number-bttn" onclick ="addNumber(this.value)" value="7">7</button>
                 <button type="button" class="col number-bttn" onclick ="addNumber(this.value)" value="8">8</button>
                 <button type="button" class="col number-bttn" onclick ="addNumber(this.value)" value="9">9</button>  
-                <button type="button" class="col op-bttn">X</button>
+                <button type="button" class="col op-bttn" onclick ="addOperation(this.value)" value="x">X</button>
             </div>
             <div class="row">
                 <button type="button" class="col number-bttn" onclick ="addNumber(this.value)" value="4">4</button>
                 <button type="button" class="col number-bttn" onclick ="addNumber(this.value)" value="5">5</button>
                 <button type="button" class="col number-bttn" onclick ="addNumber(this.value)" value="6">6</button>
-                <button type="button" class="col  op-bttn">-</button>
+                <button type="button" class="col op-bttn" onclick ="addOperation(this.value)" value="-">-</button>
             </div>
             <div class="row">
                 <button type="button" class="col number-bttn" onclick ="addNumber(this.value)" value="1">1</button>
                 <button type="button" class="col number-bttn" onclick ="addNumber(this.value)" value="2">2</button>
                 <button type="button" class="col number-bttn" onclick ="addNumber(this.value)" value="3">3</button>
-                <button type="button"class="col op-bttn">+</button>
+                <button type="button" class="col op-bttn" onclick ="addOperation(this.value)" value="+">+</button>
             </div>
             <div class="row">
-                <div class="col resultado-bttn">=</div>
-                <div class="col" id="finalNum"></div>
+                <button type="button" class="col number-bttn" onclick ="addNumber(this.value)" value="0">0</button>
+                <button type="button" class="col resultado-bttn">=</button>
             </div>
+            <div class="row">
+                <h6>History</h6>
+            </div>
+            <div class="row" id="history"></div>
         </div>
 
+        <div id="history"></div>
+        
         <script src="JS/main.js" async defer></script>
       
         <!--Bootstrap-->

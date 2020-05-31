@@ -1,47 +1,53 @@
-var numberbttn = document.getElementsByClassName("number-bttn");
+
+//
+window.onload = function(){
+    localStorage.setItem('firstNumber', 'a');
+    localStorage.setItem('operation', 'a');
+}
+
 var screen = document.getElementById("screen");
-
-
-
-var opbttn = document.getElementsByClassName("op-bttn");
+var history = document.getElementById("history");
 var resultbttn = document.getElementById("resultado-bttn");
 
+
 function addNumber(number){
-    screen.innerHTML = screen.innerHTML+number;
+    screen.innerHTML = screen.innerHTML + number;
 };
 
+function addOperation(operation){
+    let firstNumberLS = localStorage.getItem('firstNumber');
+    let operationLS = localStorage.getItem('operation');
 
+    let result;
 
+    if(firstNumberLS ==='a'){
 
-opbttn.onclick = function(){
+        localStorage.setItem('firstNumber', screen.innerHTML);
+        localStorage.setItem('operation', operation);
+        screen.innerHTML = screen.innerHTML + operation;
+        return;
+    }
 
-    //añadir simbolo a screen
-    document.getElementById("screen").innerHTML = opbttn.value;
+    let secondNumber = screen.innerHTML.replace(firstNumberLS,"");
+    secondNumber = secondNumber.replace(operationLS,"");
 
-    //si num2 contiene valor, 
-        //realizar operacion guardar en num1
-        //elminar valor op, eliminar valor num2
-        //añadir valor a op nuevo
-     
-    //guardar en localStorage el numero de pantalla
+    let num1 = Number(firstNumberLS);
+    let num2 = Number(secondNumber);
 
-    //añadir simbolo a screen
-    document.getElementById("screen").innerHTML = opbttn.value;
-
-    //guardar en localStorage el simbolo 
+    switch(operationLS){
+        case '+': result = num1 + num2; break;
+        case '-': result = num1 - num2; break;
+        default: return; 
+    }
+    localStorage.setItem('firstNumber', result);
+    localStorage.setItem('operation', operation);
     
+    history.innerHTML = history.outerHTML + '=' + screen.outerHTML + operation;
+    screen.innerHTML = result + operation;
 };
 
-resultbttn.onclick = function(){
-
-    document.getElementById("screen").innerHTML= 0;
-    //si num2 es vacio
-        //finalnum es num1
-    //sino
-        //hacer operacion 
-        //finalnum es resutado
-    let resultado = 0;
-    document.getElementById("finalNum").innerHTML = resultado;
+function cleanCalc(){
+    screen.innerHTML ="";
+    localStorage.setItem('firstNumber', '');
+    localStorage.setItem('operation', '');
 };
-
-
