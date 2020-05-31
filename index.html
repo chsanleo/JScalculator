@@ -31,7 +31,11 @@
     </nav>
 
     <div class="container calculator body">
-        <div class="row" id="screen"></div>
+        <div class="row">
+            <div class="col" id="screen"> </div>
+            <button type="button" class="col pwr-bttn" onclick="cleanCalc()">ON</button>
+            <button type="button" class="col pwr-bttn" onclick="cleanCalc()">OFF</button>
+        </div>
         <div class="row">
             <button type="button" class="col op-bttn" onclick="cleanCalc()">C</button>
             <button type="button" class="col op-bttn" onclick="addOperation(this.value)" value="/">/</button>
