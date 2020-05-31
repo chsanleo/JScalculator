@@ -5,3 +5,9 @@
 #screen{
     height: 2em;
 }
+.container{
+    margin :1em;
+}
+.body{
+    float: left;
+}
