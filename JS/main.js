@@ -36,8 +36,8 @@ function addOperation(operation){
     }
     localStorage.setItem('number','empty');
     if((operation !== '=')){
-        screen.innerHTML = screen.innerHTML + operation;
-        history.innerHTML = history.innerHTML + screen.innerHTML;
+        screen.innerHTML +=  operation;
+        history.innerHTML += number + operation;
     }
 }
 
@@ -58,7 +58,7 @@ function addResult(){
 
     if(result !== 'empty'){
          screen.innerHTML = result; 
-         history.innerHTML = history.innerHTML + localStorage.getItem('number') +' = '+ localStorage.getItem('result');
+         history.innerHTML +=  localStorage.getItem('number') +' = '+ localStorage.getItem('result');
         }
     cleanLocalStorage();
 }
@@ -72,5 +72,5 @@ function cleanLocalStorage(){
     localStorage.setItem('result', 'empty');
     localStorage.setItem('number', 'empty');
     localStorage.setItem('operation', 'empty');
-    history.innerHTML = history.innerHTML + '<br>';
+    history.innerHTML +=  '<br>';
 };
