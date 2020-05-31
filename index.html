@@ -1,58 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta name="description" content="JS Calculator">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <meta name="author" content="Christian Sanchez Leon">
 
-        
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="JS Calculator">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="Christian Sanchez Leon">
 
-        <!--Bootstrap-->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-        <link rel="stylesheet" href="CSS/main.css">
-        <title>JS Calculator</title>
-    </head>
-    <body>
-        <div class="container">
-            <div class="row" id="screen"></div>
-            <div class="row">
-                <button type="button" class="col op-bttn" onclick ="cleanCalc()">C</button>
-                <button type="button" class="col op-bttn" onclick ="addOperation(this.value)" value="/">/</button>    
+
+
+    <!--Bootstrap-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="CSS/main.css">
+    <title>JS Calculator</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-md navbar-light bg-light">
+        <a href="#" class="navbar-brand">Calculadora</a>
+        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav">
+                <a href="#" class="nav-item nav-link active">Home</a>
+                <a href="https://github.com/chsanleo" class="nav-item nav-link">Profile</a>
+                <a href="#" class="nav-item nav-link">Messages</a>
+                <a href="#" class="nav-item nav-link disabled" tabindex="-1">Reports</a>
             </div>
-            <div class="row">
-                <button type="button" class="col number-bttn" onclick ="addNumber(this.value)" value="7">7</button>
-                <button type="button" class="col number-bttn" onclick ="addNumber(this.value)" value="8">8</button>
-                <button type="button" class="col number-bttn" onclick ="addNumber(this.value)" value="9">9</button>  
-                <button type="button" class="col op-bttn" onclick ="addOperation(this.value)" value="*">*</button>
+            <div class="navbar-nav ml-auto">
+                <a href="#" class="nav-item nav-link">Login</a>
             </div>
-            <div class="row">
-                <button type="button" class="col number-bttn" onclick ="addNumber(this.value)" value="4">4</button>
-                <button type="button" class="col number-bttn" onclick ="addNumber(this.value)" value="5">5</button>
-                <button type="button" class="col number-bttn" onclick ="addNumber(this.value)" value="6">6</button>
-                <button type="button" class="col op-bttn" onclick ="addOperation(this.value)" value="-">-</button>
-            </div>
-            <div class="row">
-                <button type="button" class="col number-bttn" onclick ="addNumber(this.value)" value="1">1</button>
-                <button type="button" class="col number-bttn" onclick ="addNumber(this.value)" value="2">2</button>
-                <button type="button" class="col number-bttn" onclick ="addNumber(this.value)" value="3">3</button>
-                <button type="button" class="col op-bttn" onclick ="addOperation(this.value)" value="+">+</button>
-            </div>
-            <div class="row">
-                <button type="button" class="col number-bttn" onclick ="addNumber(this.value)" value="0">0</button>
-                <button type="button" class="col resultado-bttn" onclick="addOperation(this.value)" value="=">=</button>
-            </div>
-            <div class="row">
-                <h6>History</h6>
-            </div>
-            <div class="row" id="history"></div>
         </div>
-        
-        <script src="JS/main.js" async defer></script>
-      
-        <!--Bootstrap-->
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
-    </body>
+    </nav>
+
+
+    <div class="container calculator">
+        <div class="row" id="screen"></div>
+        <div class="row">
+            <button type="button" class="col op-bttn" onclick="cleanCalc()">C</button>
+            <button type="button" class="col op-bttn" onclick="addOperation(this.value)" value="/">/</button>
+        </div>
+        <div class="row">
+            <button type="button" class="col number-bttn" onclick="addNumber(this.value)" value="7">7</button>
+            <button type="button" class="col number-bttn" onclick="addNumber(this.value)" value="8">8</button>
+            <button type="button" class="col number-bttn" onclick="addNumber(this.value)" value="9">9</button>
+            <button type="button" class="col op-bttn" onclick="addOperation(this.value)" value="*">*</button>
+        </div>
+        <div class="row">
+            <button type="button" class="col number-bttn" onclick="addNumber(this.value)" value="4">4</button>
+            <button type="button" class="col number-bttn" onclick="addNumber(this.value)" value="5">5</button>
+            <button type="button" class="col number-bttn" onclick="addNumber(this.value)" value="6">6</button>
+            <button type="button" class="col op-bttn" onclick="addOperation(this.value)" value="-">-</button>
+        </div>
+        <div class="row">
+            <button type="button" class="col number-bttn" onclick="addNumber(this.value)" value="1">1</button>
+            <button type="button" class="col number-bttn" onclick="addNumber(this.value)" value="2">2</button>
+            <button type="button" class="col number-bttn" onclick="addNumber(this.value)" value="3">3</button>
+            <button type="button" class="col op-bttn" onclick="addOperation(this.value)" value="+">+</button>
+        </div>
+        <div class="row">
+            <button type="button" class="col number-bttn" onclick="addNumber(this.value)" value="0">0</button>
+            <button type="button" class="col resultado-bttn" onclick="addOperation(this.value)" value="=">=</button>
+        </div>
+    </div>
+    <h6>History</h6>
+    <div class="col" id="history"></div>
+
+
+    <script src="JS/main.js" async defer></script>
+
+    <!--Bootstrap-->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+</body>
+
 </html>
