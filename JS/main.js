@@ -1,53 +1,42 @@
 
 //
 window.onload = function(){
-    localStorage.setItem('firstNumber', 'a');
-    localStorage.setItem('operation', 'a');
+    localStorage.setItem('result','empty');
 }
 
 var screen = document.getElementById("screen");
 var history = document.getElementById("history");
-var resultbttn = document.getElementById("resultado-bttn");
+
 
 
 function addNumber(number){
     screen.innerHTML = screen.innerHTML + number;
+    localStorage.setItem('number',number);
 };
 
+
 function addOperation(operation){
-    let firstNumberLS = localStorage.getItem('firstNumber');
-    let operationLS = localStorage.getItem('operation');
+    let result = localStorage.getItem('result');
+    let number = localStorage.getItem('number');
 
-    let result;
-
-    if(firstNumberLS ==='a'){
-
-        localStorage.setItem('firstNumber', screen.innerHTML);
-        localStorage.setItem('operation', operation);
-        screen.innerHTML = screen.innerHTML + operation;
-        return;
+    if(isNaN(result)){
+        localStorage.setItem('result', screen.innerHTML);
     }
+    else{
+        let num1 = Number(result);
+        let num2 = Number(number);
 
-    let secondNumber = screen.innerHTML.replace(firstNumberLS,"");
-    secondNumber = secondNumber.replace(operationLS,"");
-
-    let num1 = Number(firstNumberLS);
-    let num2 = Number(secondNumber);
-
-    switch(operationLS){
-        case '+': result = num1 + num2; break;
-        case '-': result = num1 - num2; break;
-        default: return; 
+        switch(operation){
+            case '+': localStorage.setItem('result', num1 + num2); break;
+            case '-': localStorage.setItem('result', num1 - num2); break;
+            default: return; 
+        }
     }
-    localStorage.setItem('firstNumber', result);
-    localStorage.setItem('operation', operation);
-    
-    history.innerHTML = history.outerHTML + '=' + screen.outerHTML + operation;
-    screen.innerHTML = result + operation;
+    screen.innerHTML = screen.innerHTML + operation;
+    history.innerHTML = history.innerHTML + screen.innerHTML;
 };
 
 function cleanCalc(){
-    screen.innerHTML ="";
-    localStorage.setItem('firstNumber', '');
-    localStorage.setItem('operation', '');
+    screen.innerHTML ='';
+    localStorage.setItem('result', 'empty');
 };
